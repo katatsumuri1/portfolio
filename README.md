@@ -1,7 +1,8 @@
 # 失敗ノート
 
 ## サイト概要
-日々の失敗したことをつぶやくSNS
+日々の失敗したことをつぶやく事で自分の失敗を記録し、次に同じような失敗を起こさないように意識出来るサイトです。
+日頃の小さな失敗から改善していく事により、今後起こり得る大きな失敗を未然に防ぐ事に役立つ内容になっています。
 
 ### サイトテーマ
 失敗したことのSNS
@@ -28,4 +29,4 @@ https://docs.google.com/spreadsheets/d/1PlqJ0x_FD6t7GqqODGQCiqssHt5V69onlD9RTlcw
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- 仮想環境：AWS Cloud9 
+- 仮想環境：Vagrant,VirtualBox
