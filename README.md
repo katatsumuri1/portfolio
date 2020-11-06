@@ -23,14 +23,17 @@
 ・同じような境遇の人と繋がる事が出来る
 
 ## 設計書
-・テーブル定義書  
-https://docs.google.com/spreadsheets/d/1q4v-yds2PoBjFs7fUKsAelQKTCuHKfYYXBrGdpq4asY/edit#gid=212688000  
-・詳細設計書  
-https://docs.google.com/spreadsheets/d/1eCmIPDsIxtmRR4omHu7o-e4Af2wgk0BtAmZHBZDFC9c/edit#gid=0  
+
 ・ワイヤーフレーム  
-https://drive.google.com/file/d/1Qrw7c7U2LhPqt011kcdoFwj0xhYc36CF/view?usp=sharing
+https://drive.google.com/file/d/1Qrw7c7U2LhPqt011kcdoFwj0xhYc36CF/view?usp=sharing  
+・ER図  
+https://drive.google.com/file/d/1WMObKo9srd8SpBqVq7MsGh83Fp0Ru0ts/view?usp=sharing
+・テーブル定義書  
+https://docs.google.com/spreadsheets/d/1q4v-yds2PoBjFs7fUKsAelQKTCuHKfYYXBrGdpq4asY/edit?usp=sharing
+・詳細設計書  
+https://docs.google.com/spreadsheets/d/1eCmIPDsIxtmRR4omHu7o-e4Af2wgk0BtAmZHBZDFC9c/edit?usp=sharing
 ### 機能一覧
-https://docs.google.com/spreadsheets/d/1PlqJ0x_FD6t7GqqODGQCiqssHt5V69onlD9RTlcwtMQ/edit#gid=0
+https://docs.google.com/spreadsheets/d/1PlqJ0x_FD6t7GqqODGQCiqssHt5V69onlD9RTlcwtMQ/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
