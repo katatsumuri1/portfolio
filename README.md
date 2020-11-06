@@ -23,7 +23,9 @@
 ・同じような境遇の人と繋がる事が出来る
 
 ## 設計書
-
+・テーブル定義書
+https://docs.google.com/spreadsheets/d/1q4v-yds2PoBjFs7fUKsAelQKTCuHKfYYXBrGdpq4asY/edit#gid=212688000
+・
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1PlqJ0x_FD6t7GqqODGQCiqssHt5V69onlD9RTlcwtMQ/edit#gid=0
 
