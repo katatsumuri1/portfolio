@@ -23,9 +23,10 @@
 ・同じような境遇の人と繋がる事が出来る
 
 ## 設計書
-
+・画面遷移図  
+https://github.com/katatsumuri1/portfolio/blob/main/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3.tiff  
 ・ワイヤーフレーム  
-https://drive.google.com/file/d/1Qrw7c7U2LhPqt011kcdoFwj0xhYc36CF/view?usp=sharing  
+https://drive.google.com/file/d/1f28I78xnEY2fVCA-AZawl5DU5QG43J-L/view?usp=sharing  
 ・ER図  
 https://drive.google.com/file/d/1WMObKo9srd8SpBqVq7MsGh83Fp0Ru0ts/view?usp=sharing  
 ・テーブル定義書  
