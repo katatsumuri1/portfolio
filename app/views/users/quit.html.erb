@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    </br>
+    <h4 class="text-center font-weight-bolder">本当に退会しますか？</h4>
+    <h4 class="text-center">退会すると、今後つぶやく事や</h4>
+    <h4 class="text-center">これまでのつぶやきが閲覧できなくなります。</h4>
+    <h4 class="text-center">退会する場合は、「退会する」をクリックしてください。</h4>
+    </br>
+  </div>
+  <div class="row text-center">
+    <span class="col-md-2">
+      <%= link_to "退会しない", root_path, class: "btn btn-info" %>
+    </span>
+    <span class="col-md-2">
+      <%= link_to "退会する", users_out_path, method: :patch, class: "btn btn-danger" %>
+    </span>
+  </div>
+</div>
