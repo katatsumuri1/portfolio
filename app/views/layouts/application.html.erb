@@ -1,15 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Portfolio</title>
+    <title>失敗ノート</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
-  <body>
+  </head>
+    <body>
+      <header class="navbar navbar-inverse">
+        <div class="container">
+          <nav class='nav navbar-nav navbar-left'>
+
+          <%= link_to root_path do %>
+            <span><%= image_tag "logo.jpg", :size => "280x100" %></span>
+          <% end %>
+
+          </nav>
+            <nav>
+              <ul class="nav navbar-nav navbar-right" style="margin-top: 45px;">
+                <!--ログインしている場合のヘッダー-->
+                <% if user_signed_in? %>
+                  <li><%= link_to "つぶやく", new_tweet_path %></li>
+                  <li><%= link_to "マイページ", user_path(current_user) %></li>
+                  <li><%= link_to "All.Timeline",tweets_path  %></li>
+                  <li><%= link_to "Follow.Timeline", tweets_path %></li>
+                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                  <!--ログインしていない場合のヘッダー-->
+                <% else %>
+                  <li><%= link_to "about", about_path %></li>
+                  <li><%= link_to "タイムラインall", tweets_path %></li>
+                  <li><%= link_to "新規登録", new_user_registration_path %></li>
+                  <li><%= link_to "ログイン", new_user_session_path %></li>
+                <% end %>
+              </ul>
+            </nav>
+        </div>
+  </header>
+  <div class="body">
     <%= yield %>
+  </div>  
   </body>
+
 </html>
+
