@@ -1,0 +1,22 @@
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-4">
+        <h3>失敗をつぶやく</h3>
+        <%= form_with model:@Tweet, local:true do |f| %>
+          <div class="row">
+            <div class="col-sm-12">
+              <%= f.attachment_field :image %>
+            </div>
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-sm-12">
+              <%= f.text_area :body, rows:"3", placeholder:"つぶやきたい内容をこちらに" %>
+            </div>
+          </div>
+              <%= f.submit "つぶやく", class:"btn btn-lg btn-primary" %>
+        <% end %>        
+
+      </div>
+    </div>
+  </div>
