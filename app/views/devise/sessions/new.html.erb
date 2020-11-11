@@ -1,56 +1,25 @@
-<div class="container">
+<div class="container" style="background-color: #EEEEEE">
   <div class="row">
-    </br>
-    </br>
-    </br>
-    </br>
-    <div class="col-md-3 col-md-offset-2">
-      
-      <h4 class="text-center", style="background-color:#EEEEEE;">会員の方はこちらからログイン</h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-4 col-md-offset-4">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <table class="table">
-            <div class="form-group">
+            <tr>
+              <th class="user-formtitle" height="80"><h3>ユーザーログイン</h3></th>
+            </tr></br>
               <tr>
-                  <th class="table-noborder" width="120">メールアドレス</th>
-                  <td class="table-noborder" colspan="2"><%= f.email_field :email, autofocus: true, :size=>"50" %></td>
+                <td class="user-form" width="120" height="70">メールアドレスと</br>パスワードを入力してください</th>
               </tr>
-            </div>
-            <div class="form-group">
-                <tr>
-                <th class="table-noborder">パスワード</th>
-                <td class="table-noborder" colspan="2"><%= f.password_field :password, autocomplete: "current-password", :size=>"50" %></td>
-            </div>
-            <div class="form-group">
-              <tr>
-              <th class="table-noborder"></th>
-              <td class="table-noborder"></td>
-              <td class="table-noborder"><%= link_to "=>パスワードを忘れた方はこちら", new_password_path(resource_name), class: "btn-link" %></td>
-              </tr>
-            </div>
-            <div class="form-group">
-              <tr>
-              <th class="table-noborder"></th>
-              <td class="table-noborder"><%= f.submit "ログイン", class: "btn btn-primary" %></td>
-              </tr>
-            </div>
+               <tr>
+                 <td class="user-form"><%= f.email_field :email, autofocus: true, :size=>"35", placeholder:"メールアドレス" %></td>
+               </tr>
+               <tr>
+                <td class="user-form" height="70"><%= f.password_field :password, autocomplete: "current-password", :size=>"35", placeholder:"パスワード" %></td>
+               </tr>
+               <tr>
+                <td class="user-btn"><%= f.submit "サインイン", class: "btn btn-lg btn-primary pull-center" %></td>
+               </tr>
             </table>
           <% end %>
       </div>          
     </div>
-          <div class="row">
-          <div class="col-md-3 col-md-offset-2">
-          <h4 class="text-center", style="background-color: #EEEEEE;">登録がお済みでない方</h4>
-          </div>
-          </div>
-          <div class="row">
-          <div class="col-md-3 col-md-offset-3">
-            <%= link_to "こちら", new_registration_path(resource_name), data: {"turbolinks" => false}, class: "btn-link" %>から新規登録を行ってください。
-          </div>
-          </div>
- 
-    </div>
-</div>
+
