@@ -3,4 +3,5 @@ class Tweet < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   belongs_to :user
   attachment :image
+  validates :body, presence: true
 end
