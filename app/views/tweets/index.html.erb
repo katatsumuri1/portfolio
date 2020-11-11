@@ -18,7 +18,11 @@
                 <%= tweet.body %></br>
                 <!--ツイート画像を取得-->
                 <%= attachment_image_tag tweet, :image, :fill, 500, 300, format: 'jpg'  %></br>
-                <!--ツイート削除機能-->
+                <h4>
+                  <%= link_to "", tweet_path(tweet.id), class: "far fa-comment" %>
+                  <%= tweet.tweet_comments.count %>
+                </h4>
+                <!--ツイート削除-->
                 <% if tweet.user == current_user %>
                 <%= link_to "削除",tweet_path(tweet), method: :delete, "data-confirm"=>"本当に削除しますか？", class:"btn btn-danger" %>
                 <% end %>

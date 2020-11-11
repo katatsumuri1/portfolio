@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   
   get 'tweets/search'
-  resources :tweets, only: [:index, :show, :create, :destroy, :new]
+  # tweet_commentsをネストさせる
+  resources :tweets, only: [:index, :show, :create, :destroy, :new] do
+    resources :tweet_comments, only: [:create, :destroy]
+  end
 
   root to: 'home#top'
   get 'about' => 'home#about'

@@ -5,6 +5,7 @@ class TweetsController < ApplicationController
 
   def show
     @tweet = Tweet.find(params[:id])
+    @tweet_comment = TweetComment.new
   end
 
   def create

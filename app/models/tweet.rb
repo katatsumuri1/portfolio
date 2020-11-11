@@ -3,4 +3,5 @@ class Tweet < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   belongs_to :user
   attachment :image
+  has_many :tweet_comments, dependent: :destroy
 end

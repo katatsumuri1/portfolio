@@ -1,27 +1,62 @@
   <div class="container" style=background-color:#DDDDDD;>
     <div class="row">
       <div class="col-md-offset-2 col-md-7" style="background-color:#FFFFFF; padding-right: 0; padding-left: 0;">
-    <table class="table">
+          <!--ツイート詳細を表示-->
+          <table class="table">
             <tr>
-              <th width="100">
+              <th class="tweet-show" width="100">
                 <!--ツイートしたユーザーのプロフィール画像を取得-->
                 <%= image_tag('sample-author1.jpg', class: "img-circle pull-left profile-thumb") %></th>
-              <td height="100">
+              <td class="tweet-show" height="100">
                 <!--ツイートしたユーザーネームを取得-->
                 <%= link_to @tweet.user.name, user_path(@tweet.user)%>
                 <!--ツイートした日付を取得-->
-                <%= @tweet.created_at.strftime('%Y/%m/%d %H:%M:%S') %></br></br>
+                <%= @tweet.created_at.strftime('%Y/%m/%d %H:%M:%S') %></br>
                 <!--ツイート内容を取得-->
-                <%= @tweet.body %></br></br>
+                <%= @tweet.body %></br>
                 <!--ツイート画像を取得-->
                 <%= attachment_image_tag @tweet, :image, :fill, 500, 300, format: 'jpg'  %></br>
+                <!--コメント数を数える-->
+                <h4>
+                  <%= link_to "", tweet_path(@tweet.id), class: "far fa-comment" %>
+                  <%= @tweet.tweet_comments.count%>
+                </h4>
                 <!--ツイート削除機能-->
                 <% if @tweet.user == current_user %>
-                <%= link_to "削除",tweet_path, method: :delete, "data-confirm"=>"本当に削除しますか？", class:"btn btn-danger pull-left" %>
+                <%= link_to "削除",tweet_path, method: :delete, "data-confirm"=>"本当に削除しますか？", class:"btn btn-danger" %>
                 <% end %>
+
+                
               </td>
             </tr>
           </table>
+          <!--コメント一覧を取得-->
+          <h4>comment</h4>
+          <% @tweet.tweet_comments.each do |tweet_comment| %>
+            <table>
+              <tr>
+                <th class="comment-show" width="100">
+                <%= image_tag('sample-author1.jpg', class: "img-circle pull-left profile-thumb") %></th>
+                <td class="comment-show" width="100%">
+                  <%= link_to tweet_comment.user.name, user_path(tweet_comment.user)%>
+                  <%= tweet_comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %></br></br>
+                  <%= tweet_comment.comment %></br></br>
+                  <% if tweet_comment.user == current_user %> 
+                    <%= link_to "削除", tweet_tweet_comment_path(tweet_comment.id), method: :delete, "data-confirm"=>"本当に削除しますか？", class:"btn btn-danger" %></br>
+                  <% end %>
+                </td>
+              </tr>
+            </table>
+          <% end %></br>
+          <!--コメント投稿フォーム-->
+          <%= form_with(model:[@tweet,@tweet_comment], local: true)do |f| %>
+            <div class= "row">
+              <div class="col-md-10 col-md-offset-1">
+                <%= f.text_area :comment, rows:'4', class: "form-control", placeholder:"コメントをこちらに" %></br>
+                <%= f.submit "送信", class:"btn btn-info pull-right" %>
+              </div>
+            </div>  
+          <% end %>
       </div>  
     </div>      
   </div>
