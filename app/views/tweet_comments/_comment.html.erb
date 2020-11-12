@@ -1,0 +1,17 @@
+  <% tweet.tweet_comments.each do |tweet_comment| %>
+    <table>
+      <tr>
+        <th class="comment-show" width="100">
+          <%= image_tag('sample-author1.jpg', class: "img-circle pull-left profile-thumb") %>
+        </th>
+        <td class="comment-show" width="100%">
+          <%= link_to tweet_comment.user.name, user_path(tweet_comment.user)%>
+          <%= tweet_comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %></br></br>
+          <%= tweet_comment.comment %></br></br>
+          <% if tweet_comment.user == current_user %> 
+          <%= link_to "削除", tweet_tweet_comment_path(tweet_comment.id), method: :delete, "data-confirm"=>"本当に削除しますか？", class:"btn btn-danger" %></br>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  <% end %></br>

@@ -1,4 +1,5 @@
 class TweetCommentsController < ApplicationController
+  
   def create
     tweet = Tweet.find(params[:tweet_id])
     comment = TweetComment.new(tweet_comment_params)
@@ -6,10 +7,10 @@ class TweetCommentsController < ApplicationController
     comment.tweet_id = tweet.id
     comment.save
   end
+  
   def destroy
+    
     TweetComment.find_by(id: params[:id], tweet_id: params[:tweet_id]).destroy
-    # @tweet_comment = TweetComment.find(params[:id])
-    # @tweet_comment.destroy
   end
   private
   def tweet_comment_params
