@@ -1,2 +1,32 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container" style="background-color: #EEEEEE;">
+    <div class="row">
+      <div class="col-md-5 col-md-offset-">
+            <table class="table">
+              <tr>
+                <th class="user-formtitle"><h3>プロフィール</h3></th>
+              </tr></br>
+              <tr>
+                <td class="user-form" height="60"><%= attachment_image_tag @user, :image, :fill, 60, 60, class: "img-circle profile-thumb", fallback: "no_image.jpg"%></td>
+              </tr>
+              <tr>
+                <td class="user-form" height="80"><%= @user.name%></td></br>
+              </tr>
+              <tr>
+              <tr>
+                <td class="user-form" height="60"><%= @user.profile%></td>
+              </tr>
+              <tr>
+              <tr>
+                <% if @user == current_user %>
+                  <td class="user-form" height="80"><%= link_to"", edit_user_path(current_user), class: "btn btn-default btn-block glyphicon glyphicon-wrench" %></td></br>
+                <% end %>
+              </tr>
+              <tr>
+                <% if @user == current_user %>
+                  <td class="user-form" height="60"><%= link_to "退会する", users_quit_path(current_user), class:"btn btn-danger" %></td>
+                <% end %>
+              </tr>
+            </table>
+      </div>
+    </div>
+  </div>
