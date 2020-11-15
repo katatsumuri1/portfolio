@@ -21,17 +21,7 @@
                 <%= link_to "", tweet_path(@tweet.id), class: "far fa-comment" %>
                 <%= @tweet.tweet_comments.count%>
               <!--いいね機能-->
-              <% if @tweet.favorited_by?(current_user) %>
-                <%= link_to tweet_tweet_favorites_path(@tweet), method: :delete do %>
-                 <i class="fas fa-candy-cane" style="color: red;"></i>
-                  <%= @tweet.tweet_favorites.count %>
-                <% end %>
-              <% else %>
-                <%= link_to tweet_tweet_favorites_path(@tweet), method: :post do %>
-                  <i class="fas fa-candy-cane"></i>
-                  <%= @tweet.tweet_favorites.count %>
-                <% end %>
-              <% end %>
+              <i class= "tweet_favorite-btn"><%= render "tweet_favorites/tweet_favorite-btn", tweet: @tweet %></i>
               <!--ツイート削除機能-->
               <% if @tweet.user == current_user %>
                 <%= link_to "ツイート削除",tweet_path, method: :delete, "data-confirm"=>"本当に削除しますか？", class:"btn btn-danger" %>
