@@ -4,14 +4,18 @@ Rails.application.routes.draw do
   
   get 'users/quit'
   patch 'users/out'
-  resources :users, only: [:show, :edit, :update]
-  
+  resources :users, only: [:show, :edit, :update]do
+    
+  end  
   get 'tweets/search'
-  #comments,favoritesをネストさせる
   resources :tweets, only: [:index, :show, :create, :destroy, :new] do
-    resources :tweet_comments, only: [:create, :destroy]
     resource  :tweet_favorites, only: [:create, :destroy]
+    resources :tweet_comments, only: [:create, :destroy] do
+    resource  :comment_favorites, only: [:create, :destroy]
   end
+  end
+  
+ 
 
   root to: 'home#top'
   get 'about' => 'home#about'
