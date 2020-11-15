@@ -20,8 +20,8 @@
               <h4>
                 <%= link_to "", tweet_path(@tweet.id), class: "far fa-comment" %>
                 <%= @tweet.tweet_comments.count%>
-              <!--いいね機能-->
-              <i class= "tweet_favorite-btn"><%= render "tweet_favorites/tweet_favorite-btn", tweet: @tweet %></i>
+              <!--ツイートいいね機能-->
+              <i class= <%= "tweet_favorite-btn"+@tweet.id.to_s %>><%= render "tweet_favorites/tweet_favorite-btn", tweet: @tweet %></i>
               <!--ツイート削除機能-->
               <% if @tweet.user == current_user %>
                 <%= link_to "ツイート削除",tweet_path, method: :delete, "data-confirm"=>"本当に削除しますか？", class:"btn btn-danger" %>

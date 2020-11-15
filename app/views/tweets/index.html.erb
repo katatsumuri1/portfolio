@@ -2,7 +2,7 @@
     <div class="row">
     </div></br>
     <div class="row">
-      <div class="col-md-offset-2 col-md-7" style="background-color:#EEEEEE; padding-right: 0; padding-left: 0;">
+      <div class="col-md-offset-2 col-md-7" style="background-color:#FFFFFF; padding-right: 0; padding-left: 0;">
         <% @tweets.each do |tweet| %>
           <table class="table">
             <tr>
@@ -22,7 +22,7 @@
                   <!--コメント数える-->
                   <%= link_to tweet.tweet_comments.count, tweet_path(tweet.id), class: "far fa-comment" %>
                   <!--いいね機能-->
-                  <i class= "tweet_favorite-btn"><%= render "tweet_favorites/tweet_favorite-btn", tweet: tweet %></i>
+                  <i class= <%= "tweet_favorite-btn"+tweet.id.to_s %>><%= render "tweet_favorites/tweet_favorite-btn", tweet: tweet %></i>
                   <!--ツイート削除-->
                   <% if tweet.user == current_user %>
                     <%= link_to "ツイート削除",tweet_path(tweet), method: :delete, "data-confirm"=>"本当に削除しますか？", class:"btn btn-danger" %>
