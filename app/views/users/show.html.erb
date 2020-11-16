@@ -16,10 +16,14 @@
                 <td class="user-form" height="60"><%= @user.profile%></td>
               </tr>
               <tr>
+                <td class="user-form"><%= render 'info', user: @user %></td>
+              </tr>
               <tr>
                 <% if @user == current_user %>
-                  <td class="user-form" height="80"><%= link_to"", edit_user_path(current_user), class: "btn btn-default btn-block glyphicon glyphicon-wrench" %></td></br>
+                  <td class="user-form" height="60"><%= link_to"", edit_user_path(current_user), class: "btn btn-default btn-block glyphicon glyphicon-wrench" %></td></br>
                 <% end %>
+              </tr>
+              <tr>
               </tr>
               <tr>
                 <% if @user == current_user %>

@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'users/quit'
   patch 'users/out'
   resources :users, only: [:show, :edit, :update]do
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers'  => 'relationships#folloers', as: 'followers'
     
   end  
   get 'tweets/search'
