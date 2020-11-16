@@ -1,15 +1,15 @@
 <div class="container" style="background-color: #EEEEEE;">
     <div class="row">
-      <div class="col-md-5 col-md-offset-">
+      <div class="col-md-4">
             <table class="table">
               <tr>
                 <th class="user-formtitle"><h3>プロフィール</h3></th>
               </tr></br>
               <tr>
-                <td class="user-form" height="60"><%= attachment_image_tag @user, :image, :fill, 60, 60, class: "img-circle profile-thumb", fallback: "no_image.jpg"%></td>
+                <td class="user-form" height="60"><%= attachment_image_tag @user, :image, :fill, 100, 100, class: "img-circle profile-thumb", fallback: "no_image.jpg"%></td>
               </tr>
               <tr>
-                <td class="user-form" height="80"><%= @user.name%></td></br>
+                <td class="user-form"><h4 class="fas fa-user-tie"></i><%= @user.name%></h4></td></br>
               </tr>
               <tr>
               <tr>
@@ -27,6 +27,39 @@
                 <% end %>
               </tr>
             </table>
+      </div>
+      
+      <div class="col-md-7" style="background-color: #FFFFFF;">
+        <h3><%= @user.name %>のTime Line</h3>
+        <% @tweets.each do |tweet| %>
+          <table class="table">
+            <tr>
+              <th width="100">
+                <!--ツイートしたユーザーのプロフィール画像を取得-->
+                <%= image_tag('sample-author1.jpg', class: "img-circle pull-left profile-thumb") %></th>
+              <td height="100">
+                <!--ツイートしたユーザーネームを取得-->
+                <%= link_to tweet.user.name, user_path(tweet.user)%>
+                <!--ツイートした日付を取得-->
+                <%= tweet.created_at.strftime('%Y/%m/%d %H:%M:%S') %></br>
+                <!--ツイート内容を取得-->
+                <%= tweet.body %></br>
+                <!--ツイート画像を取得-->
+                <%= attachment_image_tag tweet, :image, :fill, 500, 300, format: 'jpg'  %></br>
+                <h4>
+                  <!--コメント数える-->
+                  <%= link_to tweet.tweet_comments.count, tweet_path(tweet.id), class: "far fa-comment" %>
+                  <!--いいね機能-->
+                  <i class= <%= "tweet_favorite-btn"+tweet.id.to_s %>><%= render "tweet_favorites/tweet_favorite-btn", tweet: tweet %></i>
+                  <!--ツイート削除-->
+                  <% if tweet.user == current_user %>
+                    <%= link_to "ツイート削除",tweet_path(tweet), method: :delete, "data-confirm"=>"本当に削除しますか？", class:"btn btn-danger" %>
+                  <% end %>
+                </h4>
+              </td>
+            </tr>
+          </table>
+        <% end %>
       </div>
     </div>
   </div>

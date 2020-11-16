@@ -9,21 +9,21 @@
                 <th class="user-formtitle"><h3>プロフィール編集</h3></th>
               </tr></br>
               <tr>
-                <td class="user-form" height="60"><%= f.text_field :name, autofoucus:true, :size=>"35", placeholder:"ニックネーム" %></td>
-              </tr>
-              <tr>
-                <td class="user-form" height="80"><%= f.email_field:email,  :size=>"35", placeholder:"メールアドレス" %></td></br>
-              </tr>
-              <tr>
-              <tr>
-                <td class="user-form" height="60"><%= attachment_image_tag @user, :image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%></td>
+                <td class="user-form" height="60"><%= attachment_image_tag @user, :image, :fill, 60, 60, class: "img-circle profile-thumb", fallback: "no_image.jpg"%></td>
               </tr>
               <tr>
               <tr>
                 <td class="user-form" height="60"><%= f.attachment_field :image, placeholder: "プロフィール画像" %></td>
               </tr>
               <tr>
-                <td class="user-form" height="80"><%= f.text_area :profile,  :size=>"62", placeholder:"自己紹介" %></td></br>
+                <td class="user-edit-form" height="60"><i class="fas fa-user-tie"></i><%= f.text_field :name, autofoucus:true, :size=>"35", placeholder:"ニックネーム" %></td>
+              </tr>
+              <tr>
+                <td class="user-edit-form" height="80"><i class="far fa-envelope"></i><%= f.email_field:email,  :size=>"35", placeholder:"メールアドレス" %></td></br>
+              </tr>
+              <tr>
+              <tr>
+                <td class="user-edit-form" height="80"><%= f.text_area :profile,  :size=>"62", placeholder:"自己紹介" %></td></br>
               </tr>
               <tr>
                 <td class="user-btn"><%= f.submit "変更を保存", class:"btn btn-lg btn-primary pull-center" %></td>
