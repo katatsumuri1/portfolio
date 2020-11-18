@@ -1,8 +1,8 @@
 class TweetsController < ApplicationController
   def index
-     @q = Tweet.ransack(params[:q])
-     @results = @q.result(distinct: true)
-     @tweets = Tweet.all
+    @q = Tweet.ransack(params[:q])
+    @results = @q.result(distinct: true)
+    @tweets = Tweet.all
   end
 
   def show
@@ -32,16 +32,24 @@ class TweetsController < ApplicationController
   end
   
   def following_tweets
-    byebug
     @tweets = Tweet.where(user_id: [current_user.id, *current_user.following_ids])
+    @q = Tweet.ransack(params[:q])
+    @results = @q.result(distinct: true)
   end
   
   def search
+    @q = Tweet.ransack(params[:q])
+    @results = @q.result(distinct: true)
   end
+  
   
   private
   
   def tweet_params
     params.require(:tweet).permit(:body,:image)
+  end
+  
+  def search_params
+    params.require(:q).permit(:body_cont)
   end
 end
