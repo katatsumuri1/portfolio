@@ -1,6 +1,8 @@
 class TweetsController < ApplicationController
   def index
-    @tweets = Tweet.all
+     @q = Tweet.ransack(params[:q])
+     @results = @q.result(distinct: true)
+     @tweets = Tweet.all
   end
 
   def show
@@ -28,7 +30,12 @@ class TweetsController < ApplicationController
     @tweet.destroy
     redirect_to tweets_path
   end
-
+  
+  def following_tweets
+    byebug
+    @tweets = Tweet.where(user_id: [current_user.id, *current_user.following_ids])
+  end
+  
   def search
   end
   
