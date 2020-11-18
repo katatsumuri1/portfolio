@@ -16,7 +16,15 @@
                 <td class="user-form" height="60"><%= @user.profile%></td>
               </tr>
               <tr>
-                <td class="user-form"><%= render 'info', user: @user %></td>
+                <td class="user-form" height="40">
+                  <%= link_to @user.followings.count,user_followings_path(@user) %>フォロー
+                  <%= link_to @user.followers.count,user_followers_path(@user) %>フォロワー
+                </td>
+              </tr>
+              <tr>
+                <% if @user != current_user %>
+                  <td class="user-form"><%= render 'info', user: @user %></td>
+                <% end %>
               </tr>
               <tr>
                 <% if @user == current_user %>
@@ -33,15 +41,18 @@
             </table>
       </div>
       
-      <div class="col-md-7" style="background-color: #FFFFFF;">
-        <h3><%= @user.name %>のTime Line</h3>
+      <div class="col-md-7" style="padding-right: 0; padding-left: 0;">
+        <div class= "br" style="background-color:#EEEEEE;">
+        <br>
+        <br>
+        </div>
         <% @tweets.each do |tweet| %>
           <table class="table">
             <tr>
-              <th width="100">
+              <th class="tweet-timeline-th" width="100">
                 <!--ツイートしたユーザーのプロフィール画像を取得-->
-                <%= image_tag('sample-author1.jpg', class: "img-circle pull-left profile-thumb") %></th>
-              <td height="100">
+                <%= attachment_image_tag @user, :image, :fill, 100, 100, fallback: "no_image.jpg", class: "img-circle profile-thumb" %></th>
+              <td class="tweet-timeline-td" height="100">
                 <!--ツイートしたユーザーネームを取得-->
                 <%= link_to tweet.user.name, user_path(tweet.user)%>
                 <!--ツイートした日付を取得-->
