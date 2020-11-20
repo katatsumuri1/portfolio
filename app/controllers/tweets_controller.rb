@@ -1,8 +1,10 @@
 class TweetsController < ApplicationController
+  
   def index
+    @random = Tweet.where.not(user_id: current_user.id).order("RANDOM()").limit(4)
     @q = Tweet.ransack(params[:q])
     @results = @q.result(distinct: true)
-    @tweets = Tweet.all
+    @tweets = Tweet.all.order(created_at: "DESC")
   end
 
   def show
@@ -32,7 +34,8 @@ class TweetsController < ApplicationController
   end
   
   def following_tweets
-    @tweets = Tweet.where(user_id: [current_user.id, *current_user.following_ids])
+    @random = Tweet.where.not(user_id: current_user.id).order("RANDOM()").limit(4)
+    @tweets = Tweet.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: "DESC")
     @q = Tweet.ransack(params[:q])
     @results = @q.result(distinct: true)
   end
@@ -41,7 +44,12 @@ class TweetsController < ApplicationController
     @q = Tweet.ransack(params[:q])
     @results = @q.result(distinct: true)
   end
-  
+
+  def ranking
+    range = Date.today.month
+    @favorites = Tweet.where(created_at: range).find(TweetFavorite.group(:tweet_id).order('count(tweet_id) desc').limit(3).pluck(:tweet_id))
+    @comments = TweetComment.find(CommentFavorite.group(:tweet_comment_id).order('count(tweet_comment_id) desc').limit(3).pluck(:tweet_comment_id))
+  end
   
   private
   

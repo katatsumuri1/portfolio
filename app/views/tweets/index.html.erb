@@ -1,35 +1,55 @@
-  <div class= "container" style=background-color:#DDDDDD;>
+  <div class= "container" style=background-color:#EEEEEE;>
     <div class="row">
-      <div class="col-md-offset-2 col-md-7" %>
+      <div class="col-md-6 col-md-offset-1">
       <%= render 'search_form' %>
       </div>
     </div></br>
     <div class="row">
-      <div class="col-md-offset-2 col-md-7" style="padding-right: 0; padding-left: 0;">
+      <div class="col-md-6 col-md-offset-1">
         <% @tweets.each do |tweet| %>
           <table class="table">
             <tr>
               <th class="tweet-timeline-th" width="100">
-                <!--ツイートしたユーザーのプロフィール画像を取得-->
                 <%= attachment_image_tag tweet.user, :image, :fill, 100, 100, fallback: "no_image.jpg", class: "img-circle profile-thumb" %>
               <td class="tweet-timeline-td" height="100">
-                <!--ツイートしたユーザーネームを取得-->
                 <%= link_to tweet.user.name, user_path(tweet.user)%>
-                <!--ツイートした日付を取得-->
-                <%= tweet.created_at.strftime('%Y/%m/%d %H:%M:%S') %></br>
-                <!--ツイート内容を取得-->
+                <%= tweet.created_at.strftime('%Y年%m月%d日 %H:%M分') %></br>
                 <%= tweet.body %></br>
-                <!--ツイート画像を取得-->
-                <%= attachment_image_tag tweet, :image, :fill, 500, 300, format: 'jpg'  %></br>
+                <%= attachment_image_tag tweet, :image, size:'300x300', format: 'jpg'  %></br>
                 <h4>
                   <!--コメント数える-->
                   <%= link_to tweet.tweet_comments.count, tweet_path(tweet.id), class: "far fa-comment" %>
+                  
                   <!--いいね機能-->
                   <i class= <%= "tweet_favorite-btn"+tweet.id.to_s %>><%= render "tweet_favorites/tweet_favorite-btn", tweet: tweet %></i>
-                  <!--ツイート削除-->
+                  
                   <% if tweet.user == current_user %>
                     <%= link_to "ツイート削除",tweet_path(tweet), method: :delete, "data-confirm"=>"本当に削除しますか？", class:"btn btn-danger" %>
                   <% end %>
+                </h4>
+              </td>
+            </tr>
+          </table>
+        <% end %>
+      </div>
+      <div class="col-md-4 col-md-offset-1">
+        コメントを送ろう
+        <% @random.each do |tweet| %>
+          <table class="table">
+            <tr>
+              <th class="tweet-timeline-th" width="30">
+                <%= attachment_image_tag tweet.user, :image, :fill, 100, 100, fallback: "no_image.jpg", class: "img-circle profile-thumb" %>
+              <td class="tweet-random-td" height="100">
+                <%= link_to tweet.user.name, user_path(tweet.user)%>
+                <%= tweet.created_at.strftime('%Y年%m月%d日 %H:%M分') %></br>
+                <%= tweet.body %></br>
+                <%= attachment_image_tag tweet, :image, :fill, 100, 100, format: 'jpg'  %></br>
+                <h4>
+                  <!--コメント数える-->
+                  <%= link_to tweet.tweet_comments.count, tweet_path(tweet.id), class: "far fa-comment" %>
+                  
+                  <!--いいね機能-->
+                  <i class= <%= "tweet_favorite-btn"+tweet.id.to_s %>><%= render "tweet_favorites/tweet_favorite-btn", tweet: tweet %></i>
                 </h4>
               </td>
             </tr>
