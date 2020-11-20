@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'followers'  => 'relationships#followers', as: 'followers'
     
   end  
+  get 'tweets/ranking'
   get 'tweets/search'
   get 'tweets/following_tweets'
   resources :tweets, only: [:index, :show, :create, :destroy, :new] do

@@ -7,36 +7,31 @@
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
   </head>
-    <body>
-      <header class="navbar" style="margin-bottom: 0px;">
-        <div class="container" style="background-color: white;">
+    <body style="background-color: #EEEEEE;">
+      <header class="navbar navbar-inverse" style="margin-bottom: 10px;">
+        <div class="container">
+          <nav class="nav navbar-nav navbar-left">
+            <%= link_to root_path do %>
+              <span><%= image_tag "logo_4.png", :size => "90x80" %></span>
+            <% end %>
+          </nav>  
             <nav>
-              <ul class="nav navbar-nav" style="margin-top: 25px;">
+              <ul class="nav navbar-nav navbar-right" style="margin-top: 25px;">
                 <!--ログインしている場合のヘッダー-->
                 <% if user_signed_in? %>
-                  <li><%= link_to "つぶやく", new_tweet_path %></li>
-                  <li><%= link_to "マイページ", user_path(current_user) %></li>
-                  <li><%= link_to "All.Timeline",tweets_path  %></li>
-                  <li>
-                    <%= link_to root_path do %>
-                    <span><%= image_tag "logo_4.png", :size => "90x80" %></span>
-                    <% end %>
-                  </li>
-                  <li><%= link_to "Follow.Timeline", tweets_following_tweets_path %></li>
-                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                  <li class=""> <%= link_to " tweet", new_tweet_path, class: "fas fa-feather" %></li>
+                  <li class=""> <%= link_to " mypage", user_path(current_user), class: "fas fa-user" %></li>
+                  <li class=""> <%= link_to " all.timeline",tweets_path, class: "fas fa-book" %></li>
+                  <li class=""> <%= link_to " following.timeline", tweets_following_tweets_path, class: "fas fa-book" %></li>
+                  <li class=""> <%= link_to " ranking", tweets_ranking_path, class: "fas fa-crown" %></li>
+                  <li class=""> <%= link_to " logout", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt" %></li>
+                  
                   <!--ログインしていない場合のヘッダー-->
                 <% else %>
-                  <li><%= link_to "about", about_path %></li>
-                  <li><%= link_to "タイムラインall", tweets_path %></li>
-                  <li>
-                    <%= link_to root_path do %>
-                    <span><%= image_tag "logo_4.png", :size => "90x80" %></span>
-                    <% end %>
-                  </li>
-                  <li><%= link_to "新規登録", new_user_registration_path %></li>
-                  <li><%= link_to "ログイン", new_user_session_path %></li>
+                  <li class=""> <li><%= link_to " about", about_path, class: "fas fa-book"  %></li>
+                  <li class=""> <li><%= link_to " signup", new_user_registration_path, class: "fas fa-user-plus"  %></li>
+                  <li class=""> <li><%= link_to " login", new_user_session_path, class: "fas fa-sign-in-alt"  %></li>
                 <% end %>
               </ul>
             </nav>

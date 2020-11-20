@@ -2,7 +2,7 @@
     <table>
       <tr>
         <th class="comment-show" width="100">
-          <%= image_tag('sample-author1.jpg', class: "img-circle pull-left profile-thumb") %>
+          <%= attachment_image_tag tweet_comment.user, :image, :fill, 100, 100, fallback: "no_image.jpg", class: "img-circle profile-thumb"  %>
         </th>
         <td class="comment-show" width="100%">
           <%= link_to tweet_comment.user.name, user_path(tweet_comment.user)%>
