@@ -1,4 +1,5 @@
 class CommentFavoritesController < ApplicationController
+  before_action :authenticate_user!
   
   def create 
     @comment = TweetComment.find(params[:tweet_comment_id])

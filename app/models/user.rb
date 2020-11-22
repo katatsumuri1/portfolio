@@ -3,7 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  
   attachment :image
+  
+  validates :name, presence:true
+  
   has_many :tweets, dependent: :destroy
   has_many :tweet_comments, dependent: :destroy
   has_many :tweet_favorites, dependent: :destroy
@@ -14,7 +18,12 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   # 自分をフォローしている人を取ってくる
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  validates :name, presence:true
+  
+  enum is_deleted: {Availble: false, Invalid: true}
+  
+  def active_for_authentication?
+    super && (self.is_deleted == "Availble")
+  end
   
   def follow(user_id)
     relationship = relationships.new(followed_id: user_id)
