@@ -1,4 +1,5 @@
   <%= form_with model:[tweet,tweet_comment] do |f| %>
+    <%= render "users/error_messages", resource: tweet,tweet_comment %>
     <div class= "row">
       <div class="col-md-10 col-md-offset-1">
         <%= f.text_area :comment, rows:'4', class: "form-control", placeholder:"コメントをこちらに" %></br>
