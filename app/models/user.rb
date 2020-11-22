@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   # 自分をフォローしている人を取ってくる
   has_many :followers, through: :reverse_of_relationships, source: :follower
+  validates :name, presence:true
   
   def follow(user_id)
     relationship = relationships.new(followed_id: user_id)

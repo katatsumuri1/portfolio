@@ -1,4 +1,4 @@
-  <% tweet.tweet_comments.each do |tweet_comment| %>
+  <% tweet.tweet_comments.joins(:user).where(users: { is_deleted: false }).each do |tweet_comment| %>
     <table>
       <tr>
         <th class="comment-show" width="100">

@@ -1,6 +1,6 @@
   <!--いいねボタンテンプレート-->
   <% if tweet.favorited_by?(current_user) %>
-    <%= link_to tweet.tweet_favorites.count, tweet_tweet_favorites_path(tweet), method: :delete, remote: true, class: "fas fa-candy-cane", :style=>"color:red;" %>
+    <%= link_to tweet.tweet_favorites.joins(:user).where(users: { is_deleted: false }).count, tweet_tweet_favorites_path(tweet), method: :delete, remote: true, class: "fas fa-candy-cane", :style=>"color:red;" %>
   <% else %>
-    <%= link_to tweet.tweet_favorites.count, tweet_tweet_favorites_path(tweet), method: :post, remote: true, class: "fas fa-candy-cane" %>
+    <%= link_to tweet.tweet_favorites.joins(:user).where(users: { is_deleted: false }).count, tweet_tweet_favorites_path(tweet), method: :post, remote: true, class: "fas fa-candy-cane" %>
   <% end %>

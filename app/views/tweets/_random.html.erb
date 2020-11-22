@@ -1,0 +1,25 @@
+  <% if random.exists? %>
+    <p>コメントを送ろう</p>
+      <!--ランダムに４件ツイートを表示する-->
+      <% random.each do |tweet| %>
+        <table class="table">
+          <tr>
+            <th class="tweet-timeline-th" width="30">
+              <%= attachment_image_tag tweet.user, :image, :fill, 100, 100, fallback: "no_image.jpg", class: "img-circle profile-thumb" %>
+            <td class="tweet-random-td" height="100">
+              <%= link_to tweet.user.name, user_path(tweet.user)%>
+              <%= tweet.created_at.strftime('%Y年%m月%d日 %H:%M分') %></br>
+              <%= tweet.body %></br>
+              <%= attachment_image_tag tweet, :image, :fill, 100, 100, format: 'jpg'  %></br>
+              <h4>
+                <!--コメント数える-->
+                <%= link_to tweet.tweet_comments.count, tweet_path(tweet.id), class: "far fa-comment" %>
+                <!--いいね機能-->
+                  <i class= <%= "tweet_favorite-btn"+tweet.id.to_s %>><%= render "tweet_favorites/tweet_favorite-btn", tweet: tweet %></i>
+              </h4>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    <% else %>
+    <% end %>

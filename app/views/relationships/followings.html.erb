@@ -1,21 +1,25 @@
 <div class="container">
   <div class="row">
     <h2>フォロー中</h2>
-    <% @users.each do |user| %>
-     <table class="table">
-       <tr>
-         <th width="80">
-           <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg", class: "img-circle profile-thumb" %>
-         </th>
-         <td class="relationship-form">
-          <%= link_to user.name, user_path(user) %></br>
-           <%= user.profile %>
-          <% if user != current_user %>
-            <%= render 'users/info', user: user %></td>
-          <% end %>
-         </td>
-       </tr>
-     </table>
-    <% end %> 
+    <% if @users.exists? %>
+      <% @users.each do |user| %>
+       <table class="table">
+         <tr>
+           <th width="80">
+             <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg", class: "img-circle profile-thumb" %>
+           </th>
+           <td class="relationship-form">
+            <%= link_to user.name, user_path(user) %></br>
+             <%= user.profile %>
+            <% if user != current_user %>
+              <%= render 'users/info', user: user %></td>
+            <% end %>
+           </td>
+         </tr>
+       </table>
+      <% end %> 
+    <% else %>
+      <h3>フォローしている人はいません。</h3>
+    <% end %>
   </div>
 </div>
