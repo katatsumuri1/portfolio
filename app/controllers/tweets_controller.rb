@@ -1,4 +1,5 @@
 class TweetsController < ApplicationController
+  before_action :authenticate_user!
   
   def index
     @random = Tweet.joins(:user).where(users: { is_deleted: false }).where.not(user_id: current_user.id).order("RANDOM()").limit(4)
