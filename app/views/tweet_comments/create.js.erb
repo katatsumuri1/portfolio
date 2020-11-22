@@ -1,2 +1,7 @@
-$(".tweet_comments").html("<%= j(render partial: 'tweet_comments/comment', locals: {tweet: @tweet}) %>");
-$(".form-control").val('');
+
+<% if @comment.errors.any? %>
+  $(".comment_error").html("<%= j(render partial: 'users/error_messages', locals: {resource: @comment}) %>");
+<% else %>
+  $(".tweet_comments").html("<%= j(render partial: 'tweet_comments/comment', locals: {tweet: @tweet}) %>");
+  $(".form-control").val('');
+<% end %>
