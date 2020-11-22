@@ -1,6 +1,7 @@
     <div class="container">
       <div class="row">
         <h2>フォロワー</h2>
+          <% if @users.exists? %>
             <% @users.each do |user| %>
              <table class="table">
                <tr>
@@ -18,6 +19,8 @@
                </tr>
              </table>
             <% end %> 
-            
+          <% else %>
+           <h3>フォローワーがいません。</h3>
+          <% end %>
         </div>
     </div>

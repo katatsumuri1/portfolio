@@ -13,10 +13,14 @@ class UsersController < ApplicationController
   
   def update
     @user= User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
-    
+    if @user.update(user_params)
+       flash[:success] = "登録情報を更新しました"
+       redirect_to user_path(@user.id)
+    else
+      render:edit
+    end
   end
+  
   def out
     @user = current_user
     @user.update(is_deleted: "Invalid")

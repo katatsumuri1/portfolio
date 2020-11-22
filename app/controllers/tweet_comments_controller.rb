@@ -6,7 +6,6 @@ class TweetCommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.tweet_id = @tweet.id
     @comment.save
-    
   end
   
   def destroy

@@ -17,8 +17,8 @@
               </tr>
               <tr>
                 <td class="user-form" height="40">
-                  <%= link_to @user.followings.count,user_followings_path(@user) %>フォロー
-                  <%= link_to @user.followers.count,user_followers_path(@user) %>フォロワー
+                  <%= link_to @user.followings.where(is_deleted: false).count,user_followings_path(@user) %>フォロー
+                  <%= link_to @user.followers.where(is_deleted: false).count,user_followers_path(@user) %>フォロワー
                 </td>
               </tr>
               <tr>
@@ -40,40 +40,12 @@
               </tr>
             </table>
       </div>
-      
-      <div class="col-md-7" style="padding-right: 0; padding-left: 0;">
-        <div class= "br" style="background-color:#EEEEEE;">
-        <br>
-        <br>
-        </div>
-        <% @tweets.each do |tweet| %>
-          <table class="table">
-            <tr>
-              <th class="tweet-timeline-th" width="100">
-                <!--ツイートしたユーザーのプロフィール画像を取得-->
-                <%= attachment_image_tag @user, :image, :fill, 100, 100, fallback: "no_image.jpg", class: "img-circle profile-thumb" %></th>
-              <td class="tweet-timeline-td" height="100">
-                <!--ツイートしたユーザーネームを取得-->
-                <%= link_to tweet.user.name, user_path(tweet.user)%>
-                <!--ツイートした日付を取得-->
-                <%= tweet.created_at.strftime('%Y/%m/%d %H:%M:%S') %></br>
-                <!--ツイート内容を取得-->
-                <%= tweet.body %></br>
-                <!--ツイート画像を取得-->
-                <%= attachment_image_tag tweet, :image, :fill, 500, 300, format: 'jpg'  %></br>
-                <h4>
-                  <!--コメント数える-->
-                  <%= link_to tweet.tweet_comments.count, tweet_path(tweet.id), class: "far fa-comment" %>
-                  <!--いいね機能-->
-                  <i class= <%= "tweet_favorite-btn"+tweet.id.to_s %>><%= render "tweet_favorites/tweet_favorite-btn", tweet: tweet %></i>
-                  <!--ツイート削除-->
-                  <% if tweet.user == current_user %>
-                    <%= link_to "ツイート削除",tweet_path(tweet), method: :delete, "data-confirm"=>"本当に削除しますか？", class:"btn btn-danger" %>
-                  <% end %>
-                </h4>
-              </td>
-            </tr>
-          </table>
+      <div class="col-md-7" style="padding-right: 0; padding-left: 0;"><br><br>
+        <!--idユーザーのタイムライン-->
+        <% if @tweets.exists? %>
+          <%= render "tweets/tweet_timeline", tweets: @tweets %>
+        <% else %>
+          <h3 class="text-center">つぶやきはありません</h3>
         <% end %>
       </div>
     </div>
