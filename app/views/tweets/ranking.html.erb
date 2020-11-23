@@ -1,15 +1,15 @@
   <div class= "container">
     <div class= "row">
       <div class="col-md-5 col-md-offset-1">
-        今月のキャンディー賞</br>
+        <span style="padding-left: 50px;"> <%= image_tag "candy_ranking.png" , :size => "300x200" %></span><br><br>
         <!--今月最もキャンディーを貰っている人ランキング-->
         <% @favorites.each.with_index(1) do |tweet, i| %>
-          第 <%= i %>位
+          <p3>第 <%= i %>位</p3>
             <%= render "tweet_show", tweet: tweet %>
         <% end %>
       </div>
       <div class="col-md-5 col-md-offset-1">
-        今月のいいね賞</br>
+        <span style="padding-left: 50px;"> <%= image_tag "comment_ranking.png" , :size => "300x200" %></span><br><br>
           <!--今月最もいいねを貰っている人ランキング-->
           <% @comments.each.with_index(1) do |tweet_comment, i|%>
             第 <%= i %>位
@@ -30,6 +30,7 @@
               </tr>
             </table>
           <% end %>
+          
       </div>
     </div>
   </div>

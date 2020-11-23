@@ -1,26 +1,30 @@
-    <div class="container">
-      <div class="row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-md-offset-1">
         <h2>フォロワー</h2>
           <% if @users.exists? %>
             <% @users.each do |user| %>
-             <table class="table">
-               <tr>
-                 <th width="80">
-                   <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg", class: "img-circle profile-thumb" %>
-                 </th>
-                 <td class="relationship-form">
-                   <%= link_to user.name, user_path(user) %></br>
-                   <%= user.profile %>
-                 </td>
-                 <% if user != current_user %>
-                  <%= render 'users/info', user: user %></td>
-                 <% end %>
-                 </td>
-               </tr>
-             </table>
+              <table class="table">
+                <tr>
+                  <th class="relationship-image" width="80">
+                    <%= attachment_image_tag user, :image, :fill, 100, 100, fallback: "no_image.jpg", class: "img-circle profile-thumb" %>
+                  </th>
+                  <td class="relationship-profile">
+                    <%= link_to user.name, user_path(user) %></br>
+                    <%= user.profile %>
+                  </td>
+                  <td class="relationship-btn">
+                  <% if user != current_user %>
+                    <%= render 'users/info', user: user %></td>
+                  <% end %>
+                  </td>
+                </tr>
+              </table>
             <% end %> 
           <% else %>
-           <h3>フォローワーがいません。</h3>
+            <h3>フォローワーがいません。</h3>
           <% end %>
-        </div>
+          
+      </div>
     </div>
+  </div>

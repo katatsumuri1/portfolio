@@ -17,7 +17,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
     if @tweet.save
-      flash[notice] = 'つぶやきを投稿しました'
+      flash[:notice] = 'つぶやきを投稿しました'
       redirect_to tweets_path
     else
       render :new
