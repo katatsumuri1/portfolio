@@ -1,10 +1,9 @@
 
-   <div class="container" style="background-color: #EEEEEE;">
+  <div class="container" style="background-color: #EEEEEE;">
     <div class="row">
       <div class="col-md-5 col-md-offset-3">
-        <div class="row">
-          <%= form_with model:@user, local:true do |f| %>
-            <%= render "error_messages", resource: @user %>
+        <%= form_with model:@user, local:true do |f| %>
+          <%= render "error_messages", resource: @user %>
             <table class="table">
               <tr>
                 <th class="user-formtitle"><h3>プロフィール編集</h3></th>
@@ -30,7 +29,8 @@
                 <td class="user-btn"><%= f.submit "変更を保存", class:"btn btn-lg btn-primary pull-center" %></td>
               </tr>
             </table>
-          <% end %>      
+            
+        <% end %>      
       </div>
     </div>
   </div>

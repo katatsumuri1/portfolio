@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>失敗ノート</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>failure story</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
     <body style="background-color: #EEEEEE;">
       <header class="navbar navbar-inverse" style="margin-bottom: 0px; border-radius: 0px;">
         <div class="container">
@@ -36,11 +36,10 @@
               </ul>
             </nav>
         </div>
-  </header>
-  <div class="body">
+      </header>
+      <div class="body">
       <%= yield %>
-  </div>  
-  </body>
-
-</html>
+      </div>  
+    </body>
+  </html>
 

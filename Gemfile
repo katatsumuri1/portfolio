@@ -74,5 +74,5 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'rails-i18n'
 gem 'rubocop', require: false
-gem 'rubocop-rails', require: false
 gem 'rubocop-config-rufo'
+gem 'rubocop-rails', require: false
