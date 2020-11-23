@@ -1,6 +1,7 @@
 
-inherit_from: .rubocop_todo.yml
-
+inherit_from: 
+ - .rubocop_todo.yml
+ - https://raw.githubusercontent.com/xinminlabs/rubocop-config-rufo/master/rubocop.yml
 # 追加した規約ファイル読込
 require:
   - rubocop-rails
