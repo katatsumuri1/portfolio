@@ -2,62 +2,61 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .font-weight-bold{
-  text-align: center;
+  text-align:  center;
   font-weight: bold;
 }
 .user-formtitle{
-  border: 1px solid #ddd !important;
-  text-align: center ;
+  border:           1px solid #ddd !important;
+  text-align:       center ;
   background-color: #000080;
-  color: #FFFFFF;
-  text-align: center ;
+  color:            #FFFFFF;
 }
 .user-form{
-  border-left: 1px solid #ddd !important;
-  border-right: 1px solid #ddd !important;
-  border-top: 0px !important;
+  border-left:      1px solid #ddd !important;
+  border-right:     1px solid #ddd !important;
+  border-top:       0px !important;
   background-color: #FFFFFF;
-  text-align: center ;
+  text-align:       center ;
 }
 .user-btn{
-  border-left: 1px solid #ddd !important;
-  border-right: 1px solid #ddd !important;
-  border-bottom: 1px solid #ddd !important;
-  border-top: 0px !important;
-  text-align: center;
+  border-left:      1px solid #ddd !important;
+  border-right:     1px solid #ddd !important;
+  border-bottom:    1px solid #ddd !important;
+  border-top:       0px !important;
+  text-align:       center;
   background-color: #FFFFFF;
 }
 
 .user-edit-formtitle{
-  border: 1px solid #ddd !important;
-  text-align: center ;
+  border:           1px solid #ddd !important;
+  text-align:       center ;
   background-color: #000080;
-  color: #FFFFFF;
+  color:            #FFFFFF;
 }
 .user-edit-form{
-  border-left: 1px solid #ddd !important;
-  border-right: 1px solid #ddd !important;
-  border-top: 0px !important;
+  border-left:      1px solid #ddd !important;
+  border-right:     1px solid #ddd !important;
+  border-top:       0px !important;
   background-color: #FFFFFF;
 }
 .tweet-formtitle{
-  border: 1px solid #ddd !important;
-  text-align: center ;
+  border:           1px solid #ddd !important;
+  text-align:       center ;
   background-color: #000080;
-  color: #FFFFFF;
+  color:            #FFFFFF;
 }
 .tweet-form{
-  border-left: 1px solid #ddd !important;
-  border-right: 1px solid #ddd !important;
-  border-top: 0px !important;
+  border-left:      1px solid #ddd !important;
+  border-right:     1px solid #ddd !important;
+  border-top:       0px !important;
   background-color: #FFFFFF;
 }
 .tweet-btn{
-  border-left: 1px solid #ddd !important;
-  border-right: 1px solid #ddd !important;
-  border-bottom: 1px solid #ddd !important;
-  border-top: 0px !important;
-  text-align: center;
+  border-left:      1px solid #ddd !important;
+  border-right:     1px solid #ddd !important;
+  border-bottom:    1px solid #ddd !important;
+  border-top:       0px !important;
+  text-align:       center;
   background-color: #FFFFFF;
 }
 .tweet-show{
@@ -68,12 +67,16 @@
 }
 
 .tweet-timeline-th{
-  border-left: 1px solid #ddd !important;
-  border-bottom: 1px solid #ddd !important;
+  border-left:      1px solid #ddd !important;
+  border-bottom:    1px solid #ddd !important;
   background-color: #FFFFFF;
 }
 .tweet-timeline-td{
-  border-right: 1px solid #ddd !important;
-  border-bottom: 1px solid #ddd !important;
+  border-right:     1px solid #ddd !important;
+  border-bottom:    1px solid #ddd !important;
   background-color: #FFFFFF;
+}
+
+.flash-notice{
+  color: #0099FF;
 }

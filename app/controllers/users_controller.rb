@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = '登録情報を更新しました'
+      flash[:notice] = '登録情報を更新しました'
       redirect_to user_path(@user.id)
     else
       render :edit
@@ -27,7 +27,6 @@ class UsersController < ApplicationController
     @user = current_user
     @user.update(is_deleted: 'Invalid')
     reset_session
-    flash[:notice] = '退会完了致しました。'
     redirect_to root_path
   end
 
