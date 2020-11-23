@@ -1,6 +1,7 @@
 // Place all the styles related to the Tweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .tweet-formtitle{
   border:           1px solid #ddd !important;
   text-align:       center ;
@@ -57,4 +58,8 @@
   border-right:     1px solid #ddd !important;
   border-bottom:    1px solid #ddd !important;
   background-color: #FFFFFF;
+}
+
+.random-title p {
+  font-family: 'Tegaki';
 }
