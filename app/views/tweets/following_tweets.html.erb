@@ -1,0 +1,21 @@
+  <div class= "container" style=background-color:#EEEEEE;>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-1" style="margin-top:10px;"%>
+        <%= render 'search_form' %>
+      </div>
+    </div></br>
+    <!--フォローしているユーザーのタイムライン-->
+    <div class="row">
+      <div class="col-md-6 col-md-offset-1">
+        <% if @tweets.exists? %>
+          <%= render "tweet_timeline", tweets: @tweets %>
+        <% else %>
+          <h3>フォローしているユーザーのつぶやきはありません</h3>
+        <% end %>
+      </div>  
+      <!--ツイートをランダムに４件表示する-->
+      <div class="col-md-4 col-md-offset-1">
+        <%= render "random", random: @random %>
+      </div>
+    </div>
+  </div>

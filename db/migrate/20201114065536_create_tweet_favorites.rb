@@ -1,0 +1,10 @@
+class CreateTweetFavorites < ActiveRecord::Migration[5.2]
+  def change
+    create_table :tweet_favorites do |t|
+      t.integer :user_id
+      t.integer :tweet_id
+
+      t.timestamps
+    end
+  end
+end

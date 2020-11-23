@@ -1,27 +1,25 @@
-  <div class="container" style=background-color:#DDDDDD;>
+  <div class="container" style=background-color:#EEEEEE;>
     <div class="row">
       <div class="col-md-offset-2 col-md-7" style="background-color:#FFFFFF; padding-right: 0; padding-left: 0;">
-    <table class="table">
-            <tr>
-              <th width="100">
-                <!--ツイートしたユーザーのプロフィール画像を取得-->
-                <%= image_tag('sample-author1.jpg', class: "img-circle pull-left profile-thumb") %></th>
-              <td height="100">
-                <!--ツイートしたユーザーネームを取得-->
-                <%= link_to @tweet.user.name, user_path(@tweet.user)%>
-                <!--ツイートした日付を取得-->
-                <%= @tweet.created_at.strftime('%Y/%m/%d %H:%M:%S') %></br></br>
-                <!--ツイート内容を取得-->
-                <%= @tweet.body %></br></br>
-                <!--ツイート画像を取得-->
-                <%= attachment_image_tag @tweet, :image, :fill, 500, 300, format: 'jpg'  %></br>
-                <!--ツイート削除機能-->
-                <% if @tweet.user == current_user %>
-                <%= link_to "削除",tweet_path, method: :delete, "data-confirm"=>"本当に削除しますか？", class:"btn btn-danger pull-left" %>
-                <% end %>
-              </td>
-            </tr>
-          </table>
+        <!--ツイート詳細を表示-->
+        <%= render "tweet_show", tweet: @tweet %>
+        <h4>comment</h4>
+        <!--コメント一覧を取得-->
+        <div class= "tweet_comments">
+          <%= render 'tweet_comments/comment', tweet: @tweet %>
+        </div>
+        <!--コメント投稿フォーム-->
+        <%= form_with model:[@tweet, @tweet_comment] do |f| %>
+        <div class="comment_error">
+          <%= render "users/error_messages", resource: @tweet_comment %>
+        </div>
+          <div class= "row">
+            <div class="col-md-10 col-md-offset-1">
+              <%= f.text_area :comment, rows:'4', class: "form-control", placeholder:"コメントをこちらに" %></br>
+              <%= f.submit "送信", class:"btn btn-info pull-right" %>
+            </div>
+          </div>  
+        <% end %>
       </div>  
     </div>      
   </div>

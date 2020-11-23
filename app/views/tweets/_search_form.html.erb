@@ -1,0 +1,7 @@
+  <!--部分一致でツイート内容で検索をかける-->
+  <%= search_form_for(@q, url:tweets_search_path) do |f| %>
+    <i class="fas fa-search"></i> 
+    <%= f.search_field :body_cont, placeholder:"つぶやきを検索する" %>
+    <%= f.submit "検索" %>
+  <% end %>
+  

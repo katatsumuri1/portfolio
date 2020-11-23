@@ -1,3 +1,23 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top-background-image {
+    width:               100%;
+    height:              0;
+    padding-top:         66.6666666667%;
+    background:          url(toppage.jpg);
+    background-repeat:   no-repeat;
+    background-position: relative;
+    background-size:     cover;
+  }
+  
+ .about-background-image {
+    width:               100%;
+    height:              0%;
+    padding-top:         66.6666666667%;
+    background:          url(about.jpg);
+    background-repeat:   no-repeat;
+    background-position: relative;
+    background-size:     cover;
+  }

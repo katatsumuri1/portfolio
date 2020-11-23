@@ -2,7 +2,8 @@
     <div class="row">
       <div class="col-md-5 col-md-offset-3">
         <div class="row">
-          <%= form_with model:@Tweet, local:true do |f| %>
+          <%= form_with model:@tweet, local:true do |f| %>
+            <%= render "users/error_messages", resource: @tweet %>
             <table class="table">
               <tr>
                 <th class="tweet-formtitle"><h3>失敗をつぶやく</h3></th>

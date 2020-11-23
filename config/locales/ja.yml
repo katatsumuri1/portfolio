@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    attributes:
+      tweet:
+        body: ツイート
+      tweet_comment:
+        comment: コメント
+      user:
+        name: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        
