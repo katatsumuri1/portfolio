@@ -1,5 +1,4 @@
 class TweetFavoritesController < ApplicationController
-　before_action :authenticate_user!
 
   def create
     @tweet = Tweet.find(params[:tweet_id])
