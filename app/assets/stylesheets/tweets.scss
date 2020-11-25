@@ -8,12 +8,18 @@
   background-color: #000080;
   color:            #FFFFFF;
 }
+
 .tweet-form{
   border-left:      1px solid #ddd !important;
   border-right:     1px solid #ddd !important;
   border-top:       0px !important;
   background-color: #FFFFFF;
 }
+
+.tweet-area{
+  width: 100%;
+}
+
 .tweet-btn{
   border-left:      1px solid #ddd !important;
   border-right:     1px solid #ddd !important;
@@ -22,9 +28,11 @@
   text-align:       center;
   background-color: #FFFFFF;
 }
+
 .tweet-show{
   border-bottom:    1px solid #ddd !important;
 }
+
 .comment-show{
   border-bottom:    1px solid #ddd !important;
 }
@@ -34,6 +42,7 @@
   border-bottom:    1px solid #ddd !important;
   background-color: #FFFFFF;
 }
+
 .tweet-timeline-td{
   border-right:     1px solid #ddd !important;
   border-bottom:    1px solid #ddd !important;
