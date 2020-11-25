@@ -16,18 +16,22 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP");
+
 // テーブルのボーダーを無くす
 .table-noborder{
   border-top: 0px !important;
 }
 
-// @font-face {
-//   font-family:  'Tegaki';
-//   src: font-url('g_pencilkaisho_free.ttf') format('truetype');
-//   font-weight:  normal;
-//   font-style:   normal;
-// }
 
-// body{
-//   font-family: 'Tegaki'!important;
-// }
+
+@font-face {
+  font-family:  "Tegaki";
+  src: asset_url('font.ttf') format("truetype");
+  font-weight:  normal;
+  font-style:   normal;
+}
+
+body {
+   font-family: "Noto Sans JP"; 
+}

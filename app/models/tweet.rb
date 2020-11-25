@@ -9,4 +9,5 @@ class Tweet < ApplicationRecord
   def favorited_by?(user)
     tweet_favorites.where(user_id: user.id).exists?
   end
+  validates :body, presence: true
 end
