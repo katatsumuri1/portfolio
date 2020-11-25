@@ -11,7 +11,9 @@
                 <td class="tweet-form" height="60"><%= f.attachment_field :image %></td>
               </tr>
               <tr>
-                <td class="tweet-form" height="80"><%= f.text_area :body, :size=>"62", placeholder:"つぶやきたい内容をこちらに" %></td></br>
+                <td class="tweet-form" height="80">
+                  <%= f.text_area :body, placeholder:"つぶやきたい内容をこちらに" ,class:"tweet-area" %>
+                </td></br>
               </tr>
               <tr>
                 <td class="tweet-btn"><%= f.submit "つぶやく", class:"btn btn-lg btn-primary pull-center" %></td>
