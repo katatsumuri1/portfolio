@@ -3,7 +3,7 @@
         <div class="col-md-6 col-md-offset-1" style="margin-top: 10px;">
           <h1>検索結果</h1>
             <% if @results.exists? %>
-              <% @results.each do |tweet| %>
+              <% @results.joins(:user).where(users: { is_deleted: false }).each do |tweet| %>
                 <table class="table">
                   <tr>
                     <th class="tweet-timeline-th" width="100">
