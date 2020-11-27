@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
       @user.save
     end
     it "全てデータが入っているので、保存される" do
-      expect(@user.name).to eq("taro")
+      expect(@user).to be_valid
     end
   end
 end
