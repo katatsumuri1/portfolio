@@ -1,4 +1,4 @@
-class TweetCommentsController < ApplicationController
+class TweetCommentsController < ApplicationControlle
   before_action :authenticate_user!
 
   def create
