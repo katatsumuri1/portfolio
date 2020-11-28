@@ -48,9 +48,9 @@ class TweetsController < ApplicationController
 
   def ranking
     range = Time.zone.today.in_time_zone.all_month
-    @favorites = Tweet.joins(:user).where(users: { is_deleted: false }).where(created_at: range)
+    @favorites = Tweet.joins(:user).where(created_at: range)
                             .find(TweetFavorite.joins(:user).where(users: { is_deleted: false }).where(created_at: range).group(:tweet_id).order('count(tweet_id) desc').limit(3).pluck(:tweet_id))
-    @comments = TweetComment.joins(:user).where(users: { is_deleted: false }).where(created_at: range)
+    @comments = TweetComment.joins(:user).where(created_at: range)
                             .find(CommentFavorite.joins(:user).where(users: { is_deleted: false }).where(created_at: range).group(:tweet_comment_id).order('count(tweet_comment_id) desc').limit(3).pluck(:tweet_comment_id))
   end
 
