@@ -1,0 +1,17 @@
+ <div class="container" style=background-color:#EEEEEE;>
+    <div class="row"><br><br>
+      <p>つぶやき内容</p>
+      <div class="col-md-7" style="background-color:#FFFFFF; padding-right: 0; padding-left: 0;">
+        <!--ツイート詳細を表示-->
+          <%= render "tweet_noun_show", tweet: @tweet %>
+      </div>  
+      <div class="col-md-4">
+        <% if @tweets.present? %>
+          <p>類似しているつぶやきが見つかりました</p>
+          <%= render "tweet_timeline", tweets: @tweets %>
+        <% else %>
+          <p>類似しているつぶやきはありません</p>
+        <% end %>
+      </div>
+    </div>    
+  </div>
