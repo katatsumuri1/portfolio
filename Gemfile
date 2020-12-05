@@ -80,4 +80,4 @@ gem 'rails-i18n'
 gem 'rubocop', require: false
 gem 'rubocop-config-rufo'
 gem 'rubocop-rails', require: false
-
+gem 'dotenv-rails'

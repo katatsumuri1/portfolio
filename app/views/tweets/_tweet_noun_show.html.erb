@@ -1,0 +1,21 @@
+  <table class="table">
+    <tr>
+      <th class="tweet_noun_show-th" width="100">
+        <%= attachment_image_tag tweet.user, :image, :fill, 100, 100, fallback: "no_image.jpg", class: "img-circle profile-thumb" %>
+      <td class="tweet_noun_show-td" height="100">
+        <%= link_to tweet.user.name, user_path(tweet.user)%>
+        <%= tweet.created_at.strftime('%Y年%m月%d日 %H:%M分') %></br>
+        <%= tweet.body %></br>
+        <%= attachment_image_tag tweet, :image, size:'300x300', format: 'jpg'  %></br>
+        <h4>
+          <!--コメントを数える-->
+          <%= link_to tweet.tweet_comments.joins(:user).where(users: { is_deleted: false }).count, tweet_path(tweet.id), class: "far fa-comment" %>
+          <!--いいねボタン-->
+          <i class= <%= "tweet_favorite-btn"+tweet.id.to_s %>><%= render "tweet_favorites/tweet_favorite-btn", tweet: tweet %></i>
+          <% if tweet.user == current_user %>
+            <%= link_to "ツイート削除",tweet_path(tweet), method: :delete, "data-confirm"=>"本当に削除しますか？", class:"btn btn-danger" %>
+          <% end %>
+        </h4>
+      </td>
+    </tr>
+  </table>

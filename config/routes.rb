@@ -8,10 +8,14 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers'  => 'relationships#followers', as: 'followers'
   end
+  
   get 'tweets/ranking'
   get 'tweets/search'
   get 'tweets/following_tweets'
   resources :tweets, only: %i[index show create destroy new] do
+    member do
+      get 'noun_search' =>'tweets#noun_search', as: 'noun_search'
+    end
     resource  :tweet_favorites, only: %i[create destroy]
     resources :tweet_comments, only: %i[create destroy] do
       resource :comment_favorites, only: %i[create destroy]
