@@ -10,6 +10,8 @@ class TweetFavoritesController < ApplicationController
   def destroy
     @tweet = Tweet.find(params[:tweet_id])
     favorite = current_user.tweet_favorites.find_by(tweet_id: params[:tweet_id])
-    favorite.destroy
+    if favorite.user_id == current_user.id
+      favorite.destroy
+    end
   end
 end

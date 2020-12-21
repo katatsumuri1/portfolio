@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   attachment :image
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 25}
 
   has_many :tweets, dependent: :destroy
   has_many :tweet_comments, dependent: :destroy
