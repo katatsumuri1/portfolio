@@ -11,7 +11,10 @@ class TweetCommentsController < ApplicationController
 
   def destroy
     @tweet = Tweet.find(params[:tweet_id])
-    TweetComment.find_by(id: params[:id], tweet_id: params[:tweet_id]).destroy
+    tweet_comment = TweetComment.find_by(id: params[:id], tweet_id: params[:tweet_id])
+    if tweet_comment.user_id = current_user.id
+      tweet_comment.destroy
+    end
   end
 
   private

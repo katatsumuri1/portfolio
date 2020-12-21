@@ -12,7 +12,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.joins(:user).where(users: { is_deleted: false }).find(params[:id])
     @tweet_comment = TweetComment.new
   end
-
+  
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
@@ -20,7 +20,7 @@ class TweetsController < ApplicationController
     @tweet.noun = ""
     nouns.each do|noun|
       if noun["partOfSpeech"]["tag"] == "NOUN"
-      @tweet.noun += " #{noun["text"]["content"]}"
+        @tweet.noun += " #{noun["text"]["content"]}"
       end
     end
     if @tweet.save
@@ -37,8 +37,10 @@ class TweetsController < ApplicationController
 
   def destroy
     @tweet = Tweet.find(params[:id])
-    @tweet.destroy
-    redirect_to tweets_path
+    if @tweet.user_id == current_user.id
+      @tweet.destroy
+      redirect_to tweets_path
+    end
   end
 
   def following_tweets
