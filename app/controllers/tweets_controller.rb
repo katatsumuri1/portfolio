@@ -2,14 +2,14 @@ class TweetsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @random = Tweet.joins(:user).where.not(user_id: current_user.id, users: { is_deleted: true }).order('RAND()').limit(4)
-    @q = Tweet.joins(:user).where(users: { is_deleted: false }).ransack(params[:q])
+    @random = Tweet.joins(:user).where.not(user_id: current_user.id, users: { is_deleted: true }).order('RANDOM()').limit(4)
+    @q = Tweet.exclude_withdrawn_users.ransack(params[:q])
     @results = @q.result(distinct: true)
-    @tweets = Tweet.joins(:user).where(users: { is_deleted: false }).order(created_at: 'DESC')
+    @tweets = Tweet.exclude_withdrawn_users.order(created_at: 'DESC')
   end
 
   def show
-    @tweet = Tweet.joins(:user).where(users: { is_deleted: false }).find(params[:id])
+    @tweet = Tweet.exclude_withdrawn_users.find(params[:id])
     @tweet_comment = TweetComment.new
   end
   
@@ -44,14 +44,14 @@ class TweetsController < ApplicationController
   end
 
   def following_tweets
-    @random = Tweet.joins(:user).where.not(user_id: current_user.id, users: { is_deleted: true }).order('RAND()').limit(4)
-    @tweets = Tweet.joins(:user).where(users: { is_deleted: false }).where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: 'DESC')
-    @q = Tweet.joins(:user).where(users: { is_deleted: false }).ransack(params[:q])
+    @random = Tweet.joins(:user).where.not(user_id: current_user.id, users: { is_deleted: true }).order('RANDOM()').limit(4)
+    @tweets = Tweet.exclude_withdrawn_users.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: 'DESC')
+    @q = Tweet.exclude_withdrawn_users.ransack(params[:q])
     @results = @q.result(distinct: true)
   end
   
   def noun_search
-    @tweet = Tweet.joins(:user).where(users: { is_deleted: false }).find(params[:id])
+    @tweet = Tweet.exclude_withdrawn_users.find(params[:id])
     @tweets = Tweet.joins(:user).where.not(user_id: current_user.id, users: { is_deleted: true }).where("noun LIKE?","%#{@tweet.noun}%")
   end
 
