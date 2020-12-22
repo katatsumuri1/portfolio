@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @random = Tweet.joins(:user).where.not(user_id: current_user.id, users: { is_deleted: true }).order('RANDOM()').limit(4)
+    @random = Tweet.joins(:user).where.not(user_id: current_user.id, users: { is_deleted: true }).order('RAND()').limit(4)
     @q = Tweet.exclude_withdrawn_users.ransack(params[:q])
     @results = @q.result(distinct: true)
     @tweets = Tweet.exclude_withdrawn_users.order(created_at: 'DESC')
@@ -44,7 +44,7 @@ class TweetsController < ApplicationController
   end
 
   def following_tweets
-    @random = Tweet.joins(:user).where.not(user_id: current_user.id, users: { is_deleted: true }).order('RANDOM()').limit(4)
+    @random = Tweet.joins(:user).where.not(user_id: current_user.id, users: { is_deleted: true }).order('RAND()').limit(4)
     @tweets = Tweet.exclude_withdrawn_users.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: 'DESC')
     @q = Tweet.exclude_withdrawn_users.ransack(params[:q])
     @results = @q.result(distinct: true)
