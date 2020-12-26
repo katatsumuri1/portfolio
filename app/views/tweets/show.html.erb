@@ -3,12 +3,11 @@
       <div class="col-md-offset-2 col-md-7" style="background-color:#FFFFFF; padding-right: 0; padding-left: 0;">
         <!--ツイート詳細を表示-->
         <%= render "tweet_show", tweet: @tweet %>
+        
         <h4>comment</h4>
-        <!--コメント一覧を取得-->
         <div class= "tweet_comments">
           <%= render 'tweet_comments/comment', tweet: @tweet %>
         </div>
-        <!--コメント投稿フォーム-->
         <%= form_with model:[@tweet, @tweet_comment] do |f| %>
         <div class="comment_error">
           <%= render "users/error_messages", resource: @tweet_comment %>
