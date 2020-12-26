@@ -4,6 +4,7 @@
         <th class="tweet-timeline-th" width="100">
           <%= attachment_image_tag tweet.user, :image, :fill, 100, 100, fallback: "no_image.jpg", class: "img-circle profile-thumb" %>
         </th>
+        
         <td class="tweet-timeline-td" height="100">
           <%= link_to tweet.user.name, user_path(tweet.user)%>
           <%= tweet.created_at.strftime('%Y年%m月%d日 %H:%M分') %></br>

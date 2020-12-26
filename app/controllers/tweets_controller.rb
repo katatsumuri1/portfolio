@@ -16,6 +16,7 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
+    #GoogleNaturalAPIで構文分析したものから名詞のみ取ってくる
     nouns = Language.get_data(tweet_params[:body])
     @tweet.noun = ""
     nouns.each do|noun|
@@ -23,6 +24,7 @@ class TweetsController < ApplicationController
         @tweet.noun += " #{noun["text"]["content"]}"
       end
     end
+    
     if @tweet.save
       flash[:notice] = 'つぶやきを投稿しました'
       redirect_to noun_search_tweet_path(@tweet.id)
@@ -50,18 +52,19 @@ class TweetsController < ApplicationController
     @results = @q.result(distinct: true)
   end
   
+  #ツイートした名詞と一致する過去の投稿を表示する
   def noun_search
     @tweet = Tweet.exclude_withdrawn_users.find(params[:id])
-    @tweets = Tweet.joins(:user).where.not(user_id: current_user.id, users: { is_deleted: true }).where("noun LIKE?","%#{@tweet.noun}%")
+    @tweets = Tweet.joins(:user).where.not(user_id: current_user.id,users: { is_deleted: true }).where("noun LIKE?","%#{@tweet.noun}%")
   end
-
+  
   def search
     @q = Tweet.ransack(params[:q])
     @results = @q.result(distinct: true)
   end
 
   def ranking
-    range = Time.zone.today.in_time_zone.all_month
+    range = Time.zone.today.in_time_zone.all_month  #今月のデータを取得する
     @favorites = Tweet.joins(:user).joins(tweet_favorites: :user).where("users.is_deleted = ?", false).where("users_tweet_favorites.is_deleted = ?", false)
     .group("tweet_favorites.tweet_id").order("count(tweet_id) desc").where(created_at: range).limit(3)
     
