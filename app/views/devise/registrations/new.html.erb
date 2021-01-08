@@ -5,21 +5,21 @@
         <%= render "devise/shared/error_messages", resource: resource %>
           <table class="table">
             <tr>
-              <th class="user-formtitle" ><h3>ユーザー登録</h3></th>
+              <th class="user-formtitle"><h3>ユーザー登録</h3></th>
             </tr>
             <tr>
-              <td class="user-form" height="50"> <%= f.text_field :name, autofoucus:true, autocomplete: "name",:size=>"35", placeholder:"ニックネーム" %></td>
+              <td class="user-form" height="50"> <%= f.text_field :name, autofoucus:true, autocomplete: "name", placeholder:"ニックネーム" %></td>
             </tr>
             <tr>
-              <td class="user-form" height="50"><%= f.email_field :email, autofocus: true, autocomplete: "email",:size=>"35", placeholder:"メールアドレス" %></td>
+              <td class="user-form" height="50"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス" %></td>
             </tr>
             <tr>
               <td class="user-form" height="50">
-              <%= f.password_field :password, autocomplete: "new-password",:size=>"35", placeholder:"パスワード" %>
+              <%= f.password_field :password, autocomplete: "new-password", placeholder:"パスワード" %>
               </td>
             </tr>
             <tr>
-              <td class="user-form" height="50"><%= f.password_field :password_confirmation, autocomplete: "new-password",:size=>"35", placeholder: "パスワード確認" %></td>
+              <td class="user-form" height="50"><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード確認" %></td>
             </tr>
             <tr>
               <td class="user-btn"><%= f.submit "新規登録", class: "btn btn-lg btn-primary pull-center" %></td>
