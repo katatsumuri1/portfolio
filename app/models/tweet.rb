@@ -3,7 +3,7 @@ class Tweet < ApplicationRecord
   attachment :image
   has_many :tweet_comments, dependent: :destroy
   has_many :tweet_favorites, dependent: :destroy
-  validates :body, presence: true
+  validates :body, presence: true ,length: {maximum: 255}
   
   #退会済みユーザーを取り除く
   scope :exclude_withdrawn_users, ->{joins(:user).where(users: { is_deleted: false })}
